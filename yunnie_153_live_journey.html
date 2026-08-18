@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080a12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>153 · To Yunnie</title>
+<style>
+:root{--bg:#070910;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.11);--text:#f8f7f4;--muted:#999eae;--pink:#ff7ba7;--cyan:#72e6ff;}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang TC","Helvetica Neue",sans-serif;color:var(--text);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-20%;background:radial-gradient(circle at 15% 10%,rgba(255,123,167,.2),transparent 28%),radial-gradient(circle at 90% 20%,rgba(114,230,255,.13),transparent 28%),radial-gradient(circle at 50% 100%,rgba(163,122,255,.1),transparent 30%);filter:blur(10px);pointer-events:none}
+.wrap{position:relative;max-width:520px;margin:auto;padding:calc(22px + env(safe-area-inset-top)) 18px calc(26px + env(safe-area-inset-bottom))}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;color:#a7acbb;text-transform:uppercase}
+.live{display:flex;align-items:center;gap:7px;letter-spacing:.12em}.live i{width:7px;height:7px;border-radius:50%;background:#65f6c1;box-shadow:0 0 12px #65f6c1;display:inline-block;animation:blink 1.4s infinite}@keyframes blink{50%{opacity:.35}}
+h1{margin:18px 0 6px;font-size:32px;line-height:1.12;font-weight:700;letter-spacing:-.04em}h1 span{background:linear-gradient(90deg,#fff,var(--pink));-webkit-background-clip:text;color:transparent}
+.sub{font-size:14px;color:var(--muted);line-height:1.7}
+.card{margin-top:16px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-radius:27px;padding:21px;box-shadow:0 18px 55px rgba(0,0,0,.26)}
+.kicker{text-align:center;color:var(--muted);font-size:12px;letter-spacing:.06em}.timer{margin-top:8px;display:flex;justify-content:center;align-items:center;gap:8px}.time{font-variant-numeric:tabular-nums;font-size:46px;font-weight:700;letter-spacing:-.05em}.colon{font-size:34px;color:#767d90;margin-top:-8px}.count-sub{text-align:center;font-size:12px;color:#747b8c;margin-top:5px}
+.route{margin-top:22px}.route-head{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:10px}.route-head strong{color:#e9eaf0;font-weight:600}
+.track{position:relative;height:44px}.rail{position:absolute;left:12px;right:12px;top:18px;height:3px;border-radius:99px;background:#2a2d39}.rail-fill{position:absolute;left:12px;top:18px;height:3px;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),#dba0ff,var(--cyan));box-shadow:0 0 16px rgba(255,123,167,.55)}.station{position:absolute;top:12px;width:14px;height:14px;border:3px solid #0c0e16;border-radius:50%;background:#83899a}.station.left{left:5px}.station.right{right:5px}.station.active{background:var(--cyan);box-shadow:0 0 16px rgba(114,230,255,.85)}.train{position:absolute;top:2px;left:0;transform:translateX(-50%);font-size:24px;filter:drop-shadow(0 0 12px rgba(255,255,255,.3));transition:left .9s ease}
+.labels{display:flex;justify-content:space-between;margin-top:2px;font-size:12px;color:#9aa0b0}.labels b{display:block;color:#f2f2f2;font-size:15px;margin-bottom:2px}.labels span{font-size:10px;color:#73798b}
+.status{text-align:center;font-size:14px;line-height:1.7;margin-top:15px;color:#e3e4ea}.status em{font-style:normal;color:var(--pink)}
+.percent{text-align:center;margin-top:7px;font-variant-numeric:tabular-nums;font-size:13px;color:#aeb3c0}.percent strong{font-size:18px;color:#fff}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.step{padding:13px 10px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);text-align:center}.step .t{font-size:16px;font-weight:650}.step .d{margin-top:4px;font-size:10px;color:var(--muted)}.step.active{border-color:rgba(255,123,167,.28);background:rgba(255,123,167,.07)}
+.quote{font-size:15px;line-height:1.9;color:#ededf1;text-align:center}.quote .heart{font-size:20px;margin-bottom:7px}.quote .soft{color:#9ea4b2;font-size:12px}
+.footer{text-align:center;margin-top:17px;color:#626879;font-size:10px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span>MISSION 153</span><span class="live"><i></i> LIVE JOURNEY</span></div>
+  <h1>正在前往 <span>Yunnie</span> ♡</h1>
+  <div class="sub">今天的行程很簡單：下班，搭上 153，然後去見你。</div>
+
+  <section class="card">
+    <div class="kicker" id="countTitle">距離南港出發還有</div>
+    <div class="timer"><span class="time" id="hh">00</span><span class="colon">:</span><span class="time" id="mm">00</span><span class="colon">:</span><span class="time" id="ss">00</span></div>
+    <div class="count-sub" id="countSub">18:20 · 南港站 · 高鐵 153</div>
+
+    <div class="route">
+      <div class="route-head"><span>TAIPEI</span><strong>TO YUNNIE</strong><span>TAICHUNG</span></div>
+      <div class="track">
+        <div class="rail"></div><div class="rail-fill" id="fill"></div>
+        <div class="station left active"></div><div class="station right active"></div>
+        <div class="train" id="train">🚄</div>
+      </div>
+      <div class="labels"><div><b>南港</b><span>18:20 出發</span></div><div style="text-align:right"><b>台中</b><span>19:17 抵達</span></div></div>
+      <div class="status" id="status">現在還在上班，但我的心已經先出發了。</div>
+      <div class="percent"><strong id="pct">0%</strong> · 旅程進度</div>
+    </div>
+
+    <div class="timeline">
+      <div class="step" id="s1"><div class="t">17:30</div><div class="d">下班</div></div>
+      <div class="step" id="s2"><div class="t">18:20</div><div class="d">南港 · 153</div></div>
+      <div class="step" id="s3"><div class="t">19:17</div><div class="d">台中 · 見面</div></div>
+    </div>
+  </section>
+
+  <section class="card quote">
+    <div class="heart">♡</div>
+    <div id="quote">距離見到你的時間，正在一秒一秒變少。</div>
+    <div class="soft" id="localNote">Taiwan Time · UTC+8</div>
+  </section>
+
+  <div class="footer">這個頁面不需要你的定位權限。<br>它只是想讓你知道：我正在往你那邊去。</div>
+</div>
+
+<script>
+const start = new Date('2026-08-18T17:30:00+08:00').getTime();
+const depart = new Date('2026-08-18T18:20:00+08:00').getTime();
+const arrive = new Date('2026-08-18T19:17:00+08:00').getTime();
+const pad=n=>String(Math.max(0,n)).padStart(2,'0');
+function update(){
+  const now=Date.now();
+  let title, sub, target, progress, status;
+  if(now < start){
+    title='距離下班還有'; target=start; progress=0; status='還沒下班，但我的心已經先出發了。';
+  } else if(now < depart){
+    title='距離南港出發還有'; target=depart; progress=0; status='下班了。下一站：南港，然後去見你。';
+  } else if(now < arrive){
+    title='距離抵達台中還有'; target=arrive; progress=(now-depart)/(arrive-depart)*100; status='🚄 高鐵 153 正在往你的方向前進。';
+  } else {
+    title='MISSION COMPLETE'; target=now; progress=100; status='已抵達台中。<em>下一站：Yunnie ♡</em>'; 
+  }
+  const rem=Math.max(0,target-now);
+  document.getElementById('countTitle').textContent=title;
+  document.getElementById('hh').textContent=pad(Math.floor(rem/3600000));
+  document.getElementById('mm').textContent=pad(Math.floor(rem%3600000/60000));
+  document.getElementById('ss').textContent=pad(Math.floor(rem%60000/1000));
+  document.getElementById('status').innerHTML=status;
+  document.getElementById('pct').textContent=Math.round(progress)+'%';
+  document.getElementById('fill').style.width=progress+'%';
+  document.getElementById('train').style.left=(Math.max(0,Math.min(100,progress)))+'%';
+  ['s1','s2','s3'].forEach(id=>document.getElementById(id).classList.remove('active'));
+  if(now<start) document.getElementById('s1').classList.add('active');
+  else if(now<depart) {document.getElementById('s1').classList.add('active');document.getElementById('s2').classList.add('active')}
+  else if(now<arrive) {document.getElementById('s2').classList.add('active');}
+  else {document.getElementById('s3').classList.add('active');}
+  if(now>=arrive){
+    document.getElementById('countSub').textContent='19:17 · 台中站 · 到達';
+    document.getElementById('quote').textContent='列車已抵達台中。現在，就只差走到你面前。';
+  } else if(now>=depart){
+    document.getElementById('countSub').textContent='18:20 · 南港站 · 高鐵 153';
+    document.getElementById('quote').textContent='我沒有在傳 GPS，只是想讓你看見，我正在一步一步靠近你。';
+  } else if(now>=start){
+    document.getElementById('countSub').textContent='17:30 · 下班 → 南港';
+    document.getElementById('quote').textContent='今天的目的地不是台中，是你。';
+  } else {
+    document.getElementById('countSub').textContent='17:30 · 下班時間';
+    document.getElementById('quote').textContent='先把今天的忙碌結束，再把時間留給你。';
+  }
+  document.getElementById('localNote').textContent='Taiwan Time · '+new Intl.DateTimeFormat('zh-TW',{timeZone:'Asia/Taipei',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date(now));
+}
+update();setInterval(update,1000);
+</script>
+</body>
+</html>
